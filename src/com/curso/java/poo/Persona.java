@@ -69,8 +69,18 @@ public class Persona {
 		System.out.println("La persona "+nombre+" está comiendo.");
 	}
 	
-	//Los 4 pilares de OOP
+	//Los 4 pilares de OOP----
 	/// Herencia - Las clases hijas heredan las propiedades (atributos y métodos) de su clase padre.
+		//Es única o simple, sólo pueden heredar de una clase padre. Todas vienen de Object por defecto, de donde sacan toString(), y el constructor vacío por defecto.
+		//Si el padre tiene un constructor, los hijos tienen que tener un constructor que llame al de la clase padre(Object-Animal-Vaca) con super() en la primera línea del constructor.
+		//Una clase hija hereda todos los atributos y métodos no privados de la clase padre.
+		//public class Vaca extends Animal{
+		//Sobreescribir - modificar el comportamiento de un método del padre en la clase hija.
+		//-@Override anotación que funciona en tiempo de compilación, comprueba que se sobreescribe correctamente un método.
+		//Sólo se puede acceder a los métodos de la clase de la variable con la que accedemos al objeto.
+		//Hacer cast o casting, es convertir un objeto de clase hija en objeto de clase padre. Así ya accedemos a los métodos propios de su clase. No puedes convertir algo superior en algo inferior.
+		//
+	
 	/// Encapsulación - 
 	/// Abstracción - 
 	/// Polimorfismo - 
