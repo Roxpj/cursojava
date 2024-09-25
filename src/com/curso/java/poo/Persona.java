@@ -79,7 +79,9 @@ public class Persona {
 		//-@Override anotación que funciona en tiempo de compilación, comprueba que se sobreescribe correctamente un método.
 		//Sólo se puede acceder a los métodos de la clase de la variable con la que accedemos al objeto.
 		//Hacer cast o casting, es convertir un objeto de clase hija en objeto de clase padre. Así ya accedemos a los métodos propios de su clase. No puedes convertir algo superior en algo inferior.
-		//
+		//Si una clase es abstracta no se pueden generar objetos de ese tipo. Un método abstracto no tiene funcionalidad y obliga a que su clase sea abstracta. (public abstract void blabla();)
+		//Para limitar la herencia ponemos 'final' en la declaración de la clase que no pueda tener clases hijas. ( public final class blabla extends blibli{ )
+	
 	
 	/// Encapsulación - 
 	/// Abstracción - 

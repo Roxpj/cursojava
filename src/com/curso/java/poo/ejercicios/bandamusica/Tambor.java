@@ -31,4 +31,9 @@ public class Tambor extends Instrumento {
 	public void tocar() {
 		aporrear();
 	}
+	
+	@Override
+	public void limpiar() {
+		System.out.println("Limpiando el tambor.");
+	}
 }

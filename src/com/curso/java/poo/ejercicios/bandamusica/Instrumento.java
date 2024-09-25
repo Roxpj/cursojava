@@ -1,6 +1,6 @@
 package com.curso.java.poo.ejercicios.bandamusica;
 
-public class Instrumento {
+public abstract class Instrumento {
 
 	private String nombre;
 	private String tipo;
@@ -10,7 +10,6 @@ public class Instrumento {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.afinado = false;
 	}
 	
 	
@@ -33,6 +32,10 @@ public class Instrumento {
 		this.afinado = afinado;
 	}
 	
+	@Override
+	public String toString() {
+		return "Instrumento [nombre=" + nombre + ", tipo=" + tipo + ", afinado=" + afinado + "]";
+	}
 	
 	public void afinar() {
 		afinado= Math.random()>0.4;
@@ -42,4 +45,7 @@ public class Instrumento {
 	public void tocar() {
 		System.out.println("Tocando el intrumento "+this.nombre+".");
 	}
+
+	public abstract void limpiar();
+	
 }
