@@ -69,7 +69,7 @@ public class Hospital {
 	}
 	
 	
-	public void abrirHospital() {
+	private void abrirHospital() {
 		
 		Habitacion habitacion1 = new Habitacion(01);
 		Habitacion habitacion2 = new Habitacion(02);
@@ -106,7 +106,7 @@ public class Hospital {
 		
 	}
 	
-	public void horaDeComer() {
+	private void horaDeComer() {
 		System.out.println();
 		for(Habitacion habitacion : this.getHabitaciones()) {
 			if(habitacion.getEnfermo()!=null) {
@@ -122,7 +122,7 @@ public class Hospital {
 		this.getEnfermero().comer();
 	}
 	
-	public void turnoDia() {
+	private void turnoDia() {
 		if(this.getDoctor().getTurno().equals("Día")) {
 			this.getDoctor().fichar();			
 		}
@@ -131,7 +131,7 @@ public class Hospital {
 		}
 		System.out.println();
 	}
-	public void turnoNoche() {
+	private void turnoNoche() {
 		if(this.getDoctor().getTurno().equals("Noche")) {
 			this.getDoctor().fichar();			
 		}

@@ -10,7 +10,7 @@ public class BandaMusica {
 	}
 	
 	
-	public void empezarConcierto() {
+	private void empezarConcierto() {
 		
 		Instrumento guitarra1 = new Guitarra("GuitarraClasica", 6);
 		Instrumento guitarra2 = new GuitarraElectrica("GuitarraElectr", 6, 45);
@@ -28,17 +28,17 @@ public class BandaMusica {
 		tocarInstrumentos(instrumentos);
 	}
 
-	public void afinarInstrumentos(Instrumento[] instrumentos) {
+	private void afinarInstrumentos(Instrumento[] instrumentos) {
 		for(Instrumento instrumento : instrumentos) {
 			instrumento.afinar();
 		}
 	}
 	
-	public void tocarInstrumentos(Instrumento[] instrumentos) {
+	private void tocarInstrumentos(Instrumento[] instrumentos) {
 		System.out.println("｡ ♪ ♩ ♫ ｡ ♪ ♩ ♫ ｡");
 		boolean desafinados = false;
 		for(Instrumento instrumento : instrumentos) {
-			if(instrumento.toString().contains("Tambor")) {
+			if(instrumento instanceof Tambor) {
 				Tambor tamborcito = (Tambor)instrumento;
 				tamborcito.aporrear();
 			}else {

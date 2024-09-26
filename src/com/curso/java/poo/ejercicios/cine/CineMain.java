@@ -28,7 +28,7 @@ public class CineMain {
 
 	}
 
-	public void comprarEntradas(Espectador[] espectadores, Cine cine) {
+	private void comprarEntradas(Espectador[] espectadores, Cine cine) {
 		for(Espectador espect : espectadores) {
 			int numEntradas = Utilidades.pideDatoNumerico("Bienvenido "+espect.getNombre()+". ¿Cuántas entradas quieres comprar?");
 			System.out.println("Estas son las películas con butacas disponibles:");

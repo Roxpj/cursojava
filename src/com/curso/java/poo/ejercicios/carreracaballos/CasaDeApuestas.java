@@ -61,7 +61,7 @@ public class CasaDeApuestas {
 	}
 	
 	
-	static int[][] recogerApuestas(Apostante[] apostantes) {
+	private static int[][] recogerApuestas(Apostante[] apostantes) {
 		int apuestas[][] = new int [apostantes.length] [2];
 		for(int i=0; i<apostantes.length; i++) {
 			apuestas[i][0] = Utilidades.pideDatoNumerico("Hola "+apostantes[i].getNombre()+", ¿cuánto quieres apostar?");
@@ -70,13 +70,13 @@ public class CasaDeApuestas {
 		return apuestas;
 	}
 	
-	static void mostrarSaldo(Apostante[] apostantes) {
+	private static void mostrarSaldo(Apostante[] apostantes) {
 		for(int i=0; i<apostantes.length; i++) {
 			System.out.println(apostantes[i].getNombre()+" tienes "+apostantes[i].getSaldo()+" de saldo final.");
 		}
 	}
 	
-	static void calcularApuestas(Apostante[] apostantes, int [][] apuestas, Caballo caballoGanador) {
+	private static void calcularApuestas(Apostante[] apostantes, int [][] apuestas, Caballo caballoGanador) {
 		for(int i=0; i<apostantes.length; i++) {
 			if(caballoGanador.getNumero()==apuestas[i][1]) {
 				apostantes[i].setSaldo(apostantes[i].getSaldo()+apuestas[i][0]*5);
@@ -88,7 +88,7 @@ public class CasaDeApuestas {
 		}
 	}
 	
-	static void empezarPremio(GranPremio evento, Apostante[] apostantes) {
+	private static void empezarPremio(GranPremio evento, Apostante[] apostantes) {
 		System.out.println("\t✧♞✧ Bienvenidos a el "+evento.getNombre()+" ✧♞✧");
 		System.out.println();
 		System.out.println("En esta edición contamos con "+evento.getCarreras().length+" carreras:");

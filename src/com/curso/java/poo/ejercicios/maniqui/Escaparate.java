@@ -44,7 +44,7 @@ public class Escaparate {
 		escaparate.mostrarEscaparate(maniquies);
 	}
 
-	public void mostrarEscaparate(Maniqui[] maniquies) {
+	private void mostrarEscaparate(Maniqui[] maniquies) {
 		for(Maniqui maniqui : maniquies) {
 			System.out.print("El maniquí 🧍 ");
 			if(maniqui.getVestido()!=null) {
@@ -61,7 +61,7 @@ public class Escaparate {
 		}
 	}
 	
-	public void mostrarPrecioRopa(Maniqui maniqui) {
+	private void mostrarPrecioRopa(Maniqui maniqui) {
 		if(maniqui.getVestido()!=null) {
 			System.out.println("El precio del vestido es "+maniqui.getVestido().getPrecio()+"€.");
 		}else {
