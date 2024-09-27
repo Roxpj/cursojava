@@ -10,6 +10,11 @@ public class Tienda {
 	private Usuario usuarioLogueado;
 	private boolean adminLogueado;
 	
+	public Tienda(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	
 	public Tienda(String nombre, Usuario[] usuarios, Producto[] productos) {
 		super();
 		this.nombre = nombre;
@@ -50,6 +55,9 @@ public class Tienda {
 
 	public static void main(String[] args) {
 		
+		//TODO crear objetos, arrays y cambiar creación de la tienda
+		Tienda tienda1= new Tienda("Tienda online");
+		tienda1.abrirTienda();
 		
 	}
 	

@@ -1,9 +1,12 @@
 package com.curso.java.excepciones;
 import com.curso.java.poo.Persona;
+import com.curso.java.utils.Utilidades;
 
 public class Excepciones {
 
 	public static void main(String[] args) {
+		Utilidades.pideDatoNumerico();
+		
 		System.out.println("Empieza");
 		Persona alumno = null;
 		int[] numeros = { 1, 2, 3, 4 };
@@ -12,8 +15,8 @@ public class Excepciones {
 		// Código susceptible a que genere una excepción lo controlamos con try/catch
 		// con finally podemos definir código que siempre se ejecute
 		try {
-			Thread.sleep(10000); //Detiene el hilo de ejecución en milisegundos, necesita controlarse
-			System.out.println(7/0); //Aritmetic exception
+			//Thread.sleep(10000); //Detiene el hilo de ejecución en milisegundos, necesita controlarse
+			//System.out.println(7/0); //Aritmetic exception
 			System.out.println(alumno.getNombre()); //Null pointer exception
 			System.out.println(numeros[4]); // ArrayIndexOutOfBoundException
 			// "Hola".charAt(7); // StringIndexOutOfBoundException

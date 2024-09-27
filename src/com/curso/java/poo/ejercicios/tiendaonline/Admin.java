@@ -11,14 +11,14 @@ public class Admin extends Usuario {
 	public void crearUsuario(Usuario[] usuarios) {
 		String[] tiposUsuario = { "Administrador", "Cliente" };
 		int eleccion = Utilidades.pintaMenuFormatoConRespuestaInt("Qué tipo de usuario quieres crear?", tiposUsuario);
-		//ver posiciones libres??
+		//TODO ver posiciones libres??
 		for(Usuario i : usuarios) {
 			
 		}
 		
 		switch(eleccion) {
 		case 0: Admin admin = crearAdmin();
-		//preguntar posicion
+		//TODO preguntar posicion y guardar en admin y cliente
 				usuarios[0]= admin;
 				break;
 		case 1: Cliente cliente = crearCliente();

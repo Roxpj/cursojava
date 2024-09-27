@@ -1,4 +1,5 @@
 package com.curso.java.utils;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Utilidades {
@@ -9,8 +10,7 @@ public class Utilidades {
 	 * @return valor int introducido por el usuario.
 	 */
 	public static int pideDatoNumerico() {
-		Scanner scan = new Scanner(System.in);
-		int entero = scan.nextInt();
+		int entero = pideDatoNumerico(null);
 		return entero;
 	}	
 	
@@ -20,9 +20,17 @@ public class Utilidades {
 	 * @return valor int introducido por el usuario.
 	 */
 	public static int pideDatoNumerico(String mensaje) {
-		System.out.println(mensaje);
+		if(mensaje!=null) {
+			System.out.println(mensaje);			
+		}
 		Scanner scan = new Scanner(System.in);
-		int entero = scan.nextInt();
+		int entero = 0;
+		try {
+			entero = scan.nextInt();			
+		}catch(InputMismatchException ime) {
+			System.out.println("⚠️ Debe introducir un dato numérico.");
+			pideDatoNumerico(mensaje);
+		}
 		return entero;
 	}
 	
@@ -31,8 +39,7 @@ public class Utilidades {
 	 * @return valor double introducido por el usuario.
 	 */
 	public static double pideDatoNumericoDouble() {
-		Scanner scan = new Scanner(System.in);
-		double decimal = scan.nextInt();
+		double decimal = pideDatoNumericoDouble(null);
 		return decimal;
 	}
 	
@@ -42,9 +49,17 @@ public class Utilidades {
 	 * @return valor double introducido por el usuario.
 	 */
 	public static double pideDatoNumericoDouble(String mensaje) {
-		System.out.println(mensaje);
+		if(mensaje!=null) {
+			System.out.println(mensaje);			
+		}
 		Scanner scan = new Scanner(System.in);
-		double decimal = scan.nextInt();
+		double decimal = 0;
+		try {
+			decimal = scan.nextInt();			
+		}catch(InputMismatchException ime) {
+			System.out.println("⚠️ Debe introducir un dato numérico.");
+			pideDatoNumericoDouble(mensaje);
+		}
 		return decimal;
 	}
 	
@@ -65,8 +80,7 @@ public class Utilidades {
 	 */
 	public static String pideDatoString(String mensaje) {
 		System.out.println(mensaje);
-		Scanner scan = new Scanner(System.in);
-		String texto = scan.nextLine();
+		String texto = pideDatoString();
 		return texto;
 	}
 	
@@ -80,8 +94,7 @@ public class Utilidades {
 		System.out.println(mensaje);
 		String[] texto = new String[longitud];
 		for(int i=0; i<longitud; i++) {
-			Scanner scan = new Scanner(System.in);
-			texto[i] = scan.nextLine();
+			texto[i] = pideDatoString();
 		}
 		return texto;
 	}
@@ -98,8 +111,7 @@ public class Utilidades {
 		int[] elecciones = new int[longitud];
 		String[] resultado = new String[longitud];
 		for(int i=0; i<longitud; i++) {
-			Scanner scan = new Scanner(System.in);
-			elecciones[i] = scan.nextInt();
+			elecciones[i] = pideDatoNumerico();
 			resultado[i] = opciones[elecciones[i]-1];
 		}
 		return resultado;
@@ -138,9 +150,7 @@ public class Utilidades {
 	
 	public static void pintaMenuFormato(String titulo, String[] params) {
 		System.out.println(titulo);
-		for(int i=0; i<params.length; i++) {
-		 System.out.println("\t"+(i+1)+". "+params[i]);
-		}
+		pintaMenuFormato(params);
 	}
 	
 	/**
@@ -149,9 +159,7 @@ public class Utilidades {
 	 * @param params
 	 */
 	public static String pintaMenuFormatoConRespuesta(String[] params) {
-		for(int i=0; i<params.length; i++) {
-			System.out.println("\t"+(i+1)+". "+params[i]);
-		}
+		pintaMenu(params);
 		int input = Utilidades.pideDatoNumerico();
 		String eleccion = params[input-1];
 		return eleccion;
@@ -159,11 +167,7 @@ public class Utilidades {
 	
 	public static String pintaMenuFormatoConRespuesta(String titulo, String[] params) {
 		System.out.println(titulo);
-		for(int i=0; i<params.length; i++) {
-		 System.out.println("\t"+(i+1)+". "+params[i]);
-		}
-		int input = Utilidades.pideDatoNumerico();
-		String eleccion = params[input-1];
+		String eleccion = pintaMenuFormatoConRespuesta(params);
 		return eleccion;
 	}
 	
@@ -173,19 +177,15 @@ public class Utilidades {
 	 * @param params
 	 */
 	public static int pintaMenuFormatoConRespuestaInt(String[] params) {
-		for(int i=0; i<params.length; i++) {
-			System.out.println("\t"+(i+1)+". "+params[i]);
-		}
-		int eleccion = Utilidades.pideDatoNumerico()-1;
+		pintaMenu(params);
+		int eleccion = pideDatoNumerico()-1;
 		return eleccion;
 	}
 	
 	public static int pintaMenuFormatoConRespuestaInt(String titulo, String[] params) {
 		System.out.println(titulo);
-		for(int i=0; i<params.length; i++) {
-		 System.out.println("\t"+(i+1)+". "+params[i]);
-		}
-		int eleccion = Utilidades.pideDatoNumerico()-1;
+		pintaMenu(params);
+		int eleccion = pideDatoNumerico()-1;
 		return eleccion;
 	}
 	
@@ -215,6 +215,7 @@ public class Utilidades {
 	 * @return
 	 */
 	public static String[] crearIndiceAlfab(int longitud) {
+		//TODO añadir excepcion
 		String[] abecedario = {
 	            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 	            "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
