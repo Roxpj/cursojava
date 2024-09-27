@@ -4,7 +4,18 @@ import java.util.Scanner;
 public class Utilidades {
 
 	/**
-	 * Pide un dato numérico entero al usuario a través de la consola y lo devuelve.
+	 * Recoge un dato numérico entero a través de la consola y lo devuelve.
+	 * @param mensaje para el usuario (String).
+	 * @return valor int introducido por el usuario.
+	 */
+	public static int pideDatoNumerico() {
+		Scanner scan = new Scanner(System.in);
+		int entero = scan.nextInt();
+		return entero;
+	}	
+	
+	/**
+	 * Pide un dato numérico entero con un mensaje definido por parámetros al usuario a través de la consola y lo devuelve.
 	 * @param mensaje para el usuario (String).
 	 * @return valor int introducido por el usuario.
 	 */
@@ -16,7 +27,17 @@ public class Utilidades {
 	}
 	
 	/**
-	 * Pide un dato numérico double al usuario a través de la consola y lo devuelve.
+	 * Recoge un dato numérico double a través de la consola y lo devuelve
+	 * @return valor double introducido por el usuario.
+	 */
+	public static double pideDatoNumericoDouble() {
+		Scanner scan = new Scanner(System.in);
+		double decimal = scan.nextInt();
+		return decimal;
+	}
+	
+	/**
+	 * Pide un dato numérico double con un mensaje definido por parámetros al usuario a través de la consola y lo devuelve.
 	 * @param mensaje para el usuario (String).
 	 * @return valor double introducido por el usuario.
 	 */
@@ -25,6 +46,16 @@ public class Utilidades {
 		Scanner scan = new Scanner(System.in);
 		double decimal = scan.nextInt();
 		return decimal;
+	}
+	
+	/**
+	 * Recoge un dato de tipo String al usuario a través de la consola y lo devuelve.
+	 * @return valor String introducido por el usuario.
+	 */
+	public static String pideDatoString() {
+		Scanner scan = new Scanner(System.in);
+		String texto = scan.nextLine();
+		return texto;
 	}
 	
 	/**
@@ -110,6 +141,52 @@ public class Utilidades {
 		for(int i=0; i<params.length; i++) {
 		 System.out.println("\t"+(i+1)+". "+params[i]);
 		}
+	}
+	
+	/**
+	 * Pinta un menú y le da formato con los puntos definidos por parámetros dados mediante un array de Strings y recoge la elección del usuario en formato String.
+	 * Si se aporta un mensaje como String por parámetros, la posición 0 del array es el mensaje de bienvenida, del 1 en adelante muestra los mensajes con índice numérico.
+	 * @param params
+	 */
+	public static String pintaMenuFormatoConRespuesta(String[] params) {
+		for(int i=0; i<params.length; i++) {
+			System.out.println("\t"+(i+1)+". "+params[i]);
+		}
+		int input = Utilidades.pideDatoNumerico();
+		String eleccion = params[input-1];
+		return eleccion;
+	}
+	
+	public static String pintaMenuFormatoConRespuesta(String titulo, String[] params) {
+		System.out.println(titulo);
+		for(int i=0; i<params.length; i++) {
+		 System.out.println("\t"+(i+1)+". "+params[i]);
+		}
+		int input = Utilidades.pideDatoNumerico();
+		String eleccion = params[input-1];
+		return eleccion;
+	}
+	
+	/**
+	 * Pinta un menú y le da formato con los puntos definidos por parámetros dados mediante un array de Strings y recoge la elección del usuario en formato Int.
+	 * Si se aporta un mensaje como String por parámetros, la posición 0 del array es el mensaje de bienvenida, del 1 en adelante muestra los mensajes con índice numérico.
+	 * @param params
+	 */
+	public static int pintaMenuFormatoConRespuestaInt(String[] params) {
+		for(int i=0; i<params.length; i++) {
+			System.out.println("\t"+(i+1)+". "+params[i]);
+		}
+		int eleccion = Utilidades.pideDatoNumerico()-1;
+		return eleccion;
+	}
+	
+	public static int pintaMenuFormatoConRespuestaInt(String titulo, String[] params) {
+		System.out.println(titulo);
+		for(int i=0; i<params.length; i++) {
+		 System.out.println("\t"+(i+1)+". "+params[i]);
+		}
+		int eleccion = Utilidades.pideDatoNumerico()-1;
+		return eleccion;
 	}
 	
 	/**
