@@ -7,7 +7,6 @@ public class Cliente extends Usuario {
 
 	public Cliente(String nombre, String codigoUsuario, String contraseña) {
 		super(nombre, codigoUsuario, contraseña);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Producto[] getCarritoCompra() {

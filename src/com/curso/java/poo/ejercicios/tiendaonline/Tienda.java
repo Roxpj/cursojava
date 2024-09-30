@@ -56,6 +56,8 @@ public class Tienda {
 	public static void main(String[] args) {
 		
 		//TODO crear objetos, arrays y cambiar creación de la tienda
+		
+		
 		Tienda tienda1= new Tienda("Tienda online");
 		tienda1.abrirTienda();
 		
@@ -64,7 +66,7 @@ public class Tienda {
 	public void abrirTienda() {
 		login();
 		autorizacion();
-		if(adminLogueado) {
+		if(this.adminLogueado) {
 			menuAdmin();
 		}else {
 			menuCliente();
@@ -97,8 +99,8 @@ public class Tienda {
 	}
 	
 	public void logout() {
-		usuarioLogueado = null;
-		adminLogueado = false;
+		this.usuarioLogueado = null;
+		this.adminLogueado = false;
 		login();
 	}
 	
@@ -108,7 +110,8 @@ public class Tienda {
 		String eleccion = Utilidades.pintaMenuFormatoConRespuesta("Bienvenido "+this.usuarioLogueado.getNombre()+", ¿que desea realizar?", indiceMenuAdmin);
 		do {
 			if(eleccion.contains("producto")) {
-				administrador.crearProducto(this.getProductos());
+				Producto[] productosActualizada = administrador.crearProducto(this.getProductos());
+				this.productos = productosActualizada;
 			}else {
 				administrador.crearUsuario(this.getUsuarios());
 			}
@@ -117,36 +120,78 @@ public class Tienda {
 	}
 	
 	public void menuCliente() {
-		String[] indiceMenu1 = { "Libros", "Móviles", "Ropa", "Salir"};
-		String eleccion = Utilidades.pintaMenuFormatoConRespuesta("Bienvenido "+this.usuarioLogueado.getNombre()+", seleccione una categoría.", indiceMenu1);
+		Cliente cliente = (Cliente)getUsuarioLogueado();
+		String[] indiceMenu1 = { "Libros", "Móviles", "Ropa", "Tu Cesta", "Salir"};
+		String eleccion = "";
 		do {
+			eleccion = Utilidades.pintaMenuFormatoConRespuesta("Bienvenido "+this.usuarioLogueado.getNombre()+", seleccione una categoría.", indiceMenu1);
+			
 			if(eleccion.equals("Libros")) {
+				System.out.println("Categoría Libros:");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Libro) {
-						System.out.println(producto.toString());
+						System.out.println("\t"+producto.toString());
 					}
 				}
-				
+				seleccionProducto(cliente);
 				
 			}else if(eleccion.equals("Móviles")) {
+				System.out.println("Categoría Móviles:");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Movil) {
-						System.out.println(producto.toString());
+						System.out.println("\t"+producto.toString());
 					}
 				}
-			}else {
+				seleccionProducto(cliente);
+				
+			}else if(eleccion.equals("Ropa")){
+				System.out.println("Categoría Ropa:");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Ropa) {
-						System.out.println(producto.toString());
+						System.out.println("\t"+producto.toString());
 					}
 				}
+				seleccionProducto(cliente);
+			}else if(eleccion.equals("Tu Cesta")) {
+				mostrarCarrito(cliente);
 			}
-		}while(eleccion.equals("Salir"));
+		}while(!eleccion.equals("Salir"));
 		logout();
 	}
 	
-	public void mostrarCatalogo() {
-		
+	public void seleccionProducto(Cliente cliente) {
+		boolean añadidoCesta = false;
+		int seleccion = Utilidades.pideDatoNumerico("¿Qué artículo deseas añadir a tu cesta? Indica su número de referencia:");
+		for(Producto producto : productos) {
+			if(producto.getRef()==seleccion) {
+				for(int i=0; i<cliente.getCarritoCompra().length ; i++) {
+					if(cliente.getCarritoCompra()[i]==null) {
+						cliente.getCarritoCompra()[i] = producto;
+						añadidoCesta = true;
+					}
+				}
+				if (!añadidoCesta) {
+					System.out.println("No tienes más hueco en tu cesta de la compra, no se puede agregar el artículo. Paga los artículos de tu cesta.");
+				
+				}
+			}
+		}
+		if(añadidoCesta) {
+			boolean decision = Utilidades.pideBoolean("¿Deseas añadir otro artículo de esta categoría a tu carrito? [si/no]", "si");
+			if(decision) {
+				seleccionProducto(cliente);
+			}	
+		}
+	}
+	
+	public void mostrarCarrito(Cliente cliente){
+		double total = 0;
+		System.out.println("Tu Carrito de Compra");
+		for(Producto producto : cliente.getCarritoCompra()) {
+			System.out.println("\t-"+producto.toString());
+			total += producto.getPrecio();
+		}
+		System.out.println("\tTotal a pagar:\t\t\t"+total+"€");
 	}
 	
 }

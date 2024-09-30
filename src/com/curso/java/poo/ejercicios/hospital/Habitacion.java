@@ -9,12 +9,6 @@ public class Habitacion {
 		super();
 		this.numero = numero;
 	}
-
-	public Habitacion(int numero, Enfermo enfermo) {
-		super();
-		this.numero = numero;
-		this.enfermo = enfermo;
-	}
 	
 	public int getNumero() {
 		return numero;

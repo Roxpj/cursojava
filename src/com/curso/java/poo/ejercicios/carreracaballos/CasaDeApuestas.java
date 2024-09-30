@@ -1,5 +1,6 @@
 package com.curso.java.poo.ejercicios.carreracaballos;
 
+import com.curso.java.utils.ConsoleColors;
 import com.curso.java.utils.Utilidades;
 
 public class CasaDeApuestas {
@@ -89,7 +90,7 @@ public class CasaDeApuestas {
 	}
 	
 	private static void empezarPremio(GranPremio evento, Apostante[] apostantes) {
-		System.out.println("\t✧♞✧ Bienvenidos a el "+evento.getNombre()+" ✧♞✧");
+		System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"\t✧♞✧ Bienvenidos a el "+evento.getNombre()+" ✧♞✧"+ConsoleColors.RESET);
 		System.out.println();
 		System.out.println("En esta edición contamos con "+evento.getCarreras().length+" carreras:");
 		System.out.println();

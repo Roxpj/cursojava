@@ -11,6 +11,8 @@ public class Hospital {
 	public Hospital(String nombre) {
 		super();
 		this.nombre = nombre;
+		//this.habitaciones = new Habitacion[2];
+		//this.salaDeEspera = new Paciente[3];
 	}
 
 	public Hospital(String nombre, Habitacion[] habitaciones, Paciente[] salaDeEspera) {
@@ -83,6 +85,7 @@ public class Hospital {
 		Paciente paciente1 = new Paciente("Andrea", 22, sintomas1);
 		Paciente paciente2 = new Paciente("Titus", 39, sintomas2);
 		Paciente paciente3 = new Paciente("Marquitos", 14, sintomas3);
+		//Paciente paciente4 = new Paciente("Pepi", 24, new String[] {"Mareos","Perdida visión"};
 		Paciente[] salaDeEspera = { paciente1, paciente2, paciente3 };
 		this.setSalaDeEspera(salaDeEspera);
 		

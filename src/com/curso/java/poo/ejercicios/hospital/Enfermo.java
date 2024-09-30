@@ -21,7 +21,7 @@ public class Enfermo extends Persona {
 
 	@Override
 	public void comer() {
-		System.out.println("El enfermo "+this.getNombre()+" está comiendo en la habitación.");
+		System.out.println("El enfermo "+super.getNombre()+" está comiendo en la habitación.");
 	}
 
 }
