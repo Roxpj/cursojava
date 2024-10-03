@@ -3,6 +3,13 @@ import com.curso.java.poo.Persona;
 import com.curso.java.utils.Utilidades;
 
 public class Excepciones {
+	
+	//Las excepciones son objetos que se pueden lanzar(throwable) que nos avisan de un fallo concreto en nuestro código en tiempo de ejecución.
+	//Ej. NullPointer, OutOfBounds, etc...
+	//Podemos crear excepciones propias para nuestros proyectos. Podemos crearla heredando de Exception 
+	//Generamos su constructor para pasarle mensaje al padre (Exception) y poder usar su funcion.
+	
+	
 
 	public static void main(String[] args) {
 		Utilidades.pideDatoNumerico();
@@ -36,23 +43,21 @@ public class Excepciones {
 		}
 		
 		
-		
+		//Uso de un método que lanza una excepción propia (lineas 57-62), tiene que controlarse con try/catch
 		try {
 			metodo1();
 		} catch (MiExcepcion e) {
 			System.out.println("Error en metodo1 ");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("Fin");
 	}
 	
-	
-	public static void metodo1() throws MiExcepcion{ //necesitamos controlar la excepcion, así obligamos a la llamada a controlar
+	//necesitamos controlar la excepcion, así obligamos a la llamada de este método a controlarla (en línea 47-55)
+	public static void metodo1() throws MiExcepcion{
 		if(Math.random()>0.5) {
 			MiExcepcion me = new MiExcepcion("Esto es un error propio");
 			throw me;
-			
 		}
 	}
 	

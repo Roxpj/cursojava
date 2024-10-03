@@ -4,6 +4,7 @@ public class TeoriaInterfaces {
 
 	
 	//Elemento de un proyecto para otorgar funcionalidad a las clases.
+	//Sus métodos don públicos y abstractos.
 	//Tiene métodos abstractos (sin necesidad de poner abstract) ya que su función sólo es dar funcionalidad.
 	//Se IMPLEMENTA en una clase así ---> public class Saxofon extends Instrumento implements Vendible, Interfaz3, Interfaz1{
 	//La herencia es única, pero podemos implementar tantas interfaces como queramos. Permite implementar el mismo método en dos clases que no tengan nada que ver.
