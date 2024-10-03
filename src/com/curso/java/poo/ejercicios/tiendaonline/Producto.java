@@ -15,7 +15,6 @@ public class Producto {
 		this.precio = precio;
 	}
 	
-	
 	public int getRef() {
 		return ref;
 	}
@@ -27,6 +26,11 @@ public class Producto {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+	
+	@Override
+	public String toString() {
+		return "Producto [ref=" + ref + ", precio=" + precio + "]";
 	}
 
 }

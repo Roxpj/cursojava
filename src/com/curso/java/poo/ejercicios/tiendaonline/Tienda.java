@@ -55,17 +55,37 @@ public class Tienda {
 
 	public static void main(String[] args) {
 		
-		//TODO crear objetos, arrays y cambiar creación de la tienda
 		
+		Libro libro1 = new Libro(0001, 15, 987531315, "Libro 1");
+		Libro libro2 = new Libro(0002, 21, 987326882, "Libro 2");
+		Libro libro3 = new Libro(0003, 10, 987874555, "Libro 3");
+		Libro libro4 = new Libro(0004, 35, 987235416, "Libro 4");
 		
-		Tienda tienda1= new Tienda("Tienda online");
+		Movil movil1 = new Movil(0005, 150, "Motorola", "25J");
+		Movil movil2 = new Movil(0006, 360, "Motorola", "27X");
+		Movil movil3 = new Movil(0007, 200, "Samsung", "500");
+		Movil movil4 = new Movil(0010, 600, "Samsung", "800");
+		Movil movil5 = new Movil(0011, 990, "Motorola", "20N");
+		
+		Ropa ropa1 = new Ropa(0012, 20, "Pantalon", 36, "Negro");
+		Ropa ropa2 = new Ropa(0013, 40, "Pantalon", 42, "Blanco");
+		Ropa ropa3 = new Ropa(0014, 34, "Blusa", 46, "Verde");
+		Ropa ropa4 = new Ropa(0015, 16, "Camiseta", 38, "Azul");
+
+		Producto[] productos = { libro1, libro2, libro3, libro4, movil1, movil2, movil3, movil4, movil5, ropa1, ropa2, ropa3, ropa4 };
+		
+		Admin user1 = new Admin("admin1", "admin_01", "admin1234");
+		Cliente user2 = new Cliente("cliente1", "cliente_01", "cliente1234");
+		Usuario[] usuarios = {user1, user2 };
+		
+		Tienda tienda1= new Tienda("Tienda online", usuarios, productos);
 		tienda1.abrirTienda();
 		
 	}
 	
 	public void abrirTienda() {
 		login();
-		autorizacion();
+//		autorizacion();
 		if(this.adminLogueado) {
 			menuAdmin();
 		}else {
@@ -81,22 +101,25 @@ public class Tienda {
 			String contraseña = Utilidades.pideDatoString("Contraseña:");
 			
 			for(Usuario usuariobbdd : this.getUsuarios()) {
-				if(usuario.equalsIgnoreCase(usuariobbdd.getNombre()) && contraseña.equals(usuariobbdd.getContraseña())) {
+				if(usuario.equalsIgnoreCase(usuariobbdd.getCodigoUsuario()) && contraseña.equals(usuariobbdd.getContraseña())) {
 					this.usuarioLogueado = usuariobbdd;
 					usuarioValidado = true;
+					if(usuariobbdd instanceof Admin) {
+						this.adminLogueado = true;
+					}
 				}
 			}
-			if(usuarioValidado) {
+			if(!usuarioValidado) {
 				System.out.println("Usuario o contraseña incorrecta. Inténtelo de nuevo.");
 			}
 		}while(!usuarioValidado);
 	}
 	
-	public void autorizacion() {
-		if(this.usuarioLogueado instanceof Admin) {
-			this.adminLogueado = true;
-		}
-	}
+//	public void autorizacion() {
+//		if(this.usuarioLogueado instanceof Admin) {
+//			this.adminLogueado = true;
+//		}
+//	}
 	
 	public void logout() {
 		this.usuarioLogueado = null;
@@ -115,7 +138,7 @@ public class Tienda {
 			}else {
 				administrador.crearUsuario(this.getUsuarios());
 			}
-		}while(eleccion.equals("Salir"));
+		}while(!eleccion.equals("Salir"));
 		logout();
 	}
 	
@@ -128,6 +151,7 @@ public class Tienda {
 			
 			if(eleccion.equals("Libros")) {
 				System.out.println("Categoría Libros:");
+				System.out.println("\tNºRef    Título      ISBN     Precio");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Libro) {
 						System.out.println("\t"+producto.toString());
@@ -137,6 +161,7 @@ public class Tienda {
 				
 			}else if(eleccion.equals("Móviles")) {
 				System.out.println("Categoría Móviles:");
+				System.out.println("\tNºRef    Marca      Modelo     Precio");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Movil) {
 						System.out.println("\t"+producto.toString());
@@ -146,6 +171,7 @@ public class Tienda {
 				
 			}else if(eleccion.equals("Ropa")){
 				System.out.println("Categoría Ropa:");
+				System.out.println("\tNºRef    Prenda     Talla    Color     Precio");
 				for(Producto producto : this.productos) {
 					if(producto instanceof Ropa) {
 						System.out.println("\t"+producto.toString());
@@ -153,7 +179,12 @@ public class Tienda {
 				}
 				seleccionProducto(cliente);
 			}else if(eleccion.equals("Tu Cesta")) {
-				mostrarCarrito(cliente);
+				double totalCarrito = cliente.mostrarCarrito();
+				//TODO añadir opcion borrar artículos de la cesta
+				boolean pagarOVolver = Utilidades.pideBoolean("Elija una opcion: [Pagar/Volver]", "Pagar");
+				if(pagarOVolver){
+					cliente.pagarCarrito(totalCarrito);
+				}
 			}
 		}while(!eleccion.equals("Salir"));
 		logout();
@@ -168,6 +199,7 @@ public class Tienda {
 					if(cliente.getCarritoCompra()[i]==null) {
 						cliente.getCarritoCompra()[i] = producto;
 						añadidoCesta = true;
+						break;
 					}
 				}
 				if (!añadidoCesta) {
@@ -184,15 +216,6 @@ public class Tienda {
 		}
 	}
 	
-	public void mostrarCarrito(Cliente cliente){
-		double total = 0;
-		System.out.println("Tu Carrito de Compra");
-		for(Producto producto : cliente.getCarritoCompra()) {
-			System.out.println("\t-"+producto.toString());
-			total += producto.getPrecio();
-		}
-		System.out.println("\tTotal a pagar:\t\t\t"+total+"€");
-	}
 	
 }
 

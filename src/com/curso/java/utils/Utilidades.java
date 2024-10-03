@@ -159,8 +159,8 @@ public class Utilidades {
 	 * @param params
 	 */
 	public static String pintaMenuFormatoConRespuesta(String[] params) {
-		pintaMenu(params);
-		int input = Utilidades.pideDatoNumerico();
+		pintaMenuFormato(params);
+		int input = pideDatoNumerico();
 		String eleccion = params[input-1];
 		return eleccion;
 	}
@@ -177,14 +177,14 @@ public class Utilidades {
 	 * @param params
 	 */
 	public static int pintaMenuFormatoConRespuestaInt(String[] params) {
-		pintaMenu(params);
+		pintaMenuFormato(params);
 		int eleccion = pideDatoNumerico()-1;
 		return eleccion;
 	}
 	
 	public static int pintaMenuFormatoConRespuestaInt(String titulo, String[] params) {
 		System.out.println(titulo);
-		pintaMenu(params);
+		pintaMenuFormato(params);
 		int eleccion = pideDatoNumerico()-1;
 		return eleccion;
 	}

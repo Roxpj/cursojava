@@ -25,5 +25,10 @@ public class Libro extends Producto {
 		this.titulo = titulo;
 	}
 
+	@Override
+	public String toString() {
+		return getRef() + "   -   " + titulo + "   " + isbn + "   - "+getPrecio() + "€";
+	}
+
 	
 }

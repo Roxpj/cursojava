@@ -68,13 +68,13 @@ public class Admin extends Usuario {
 		int eleccion = Utilidades.pintaMenuFormatoConRespuestaInt("Qué tipo de producto quieres crear?", tiposProducto);
 		switch(eleccion) {
 		case 0: Libro libro = crearLibro();
-				productosActualizada[-1] = libro;
+				productosActualizada[productos.length] = libro;
 				break;
 		case 1: Movil movil = crearMovil();
-				productosActualizada[-1] = movil;
+				productosActualizada[productos.length] = movil;
 				break;
 		case 2: Ropa ropa = crearRopa();
-				productosActualizada[-1] = ropa;
+				productosActualizada[productos.length] = ropa;
 				break;
 		case 3: return productos;
 		default: System.out.println("Por favor, seleccione una de las opciones."); crearProducto(productos);

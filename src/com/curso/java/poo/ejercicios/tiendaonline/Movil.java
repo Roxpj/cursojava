@@ -24,5 +24,10 @@ public class Movil extends Producto {
 		this.modelo = modelo;
 	}
 
+	@Override
+	public String toString() {
+		return getRef() + "   -   " + marca + "      " + modelo + "  -  "+getPrecio() + "€";
+	}
+
 	
 }

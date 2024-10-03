@@ -1,6 +1,8 @@
 package com.curso.java.poo.ejercicios.carreracaballos;
 
-public class Caballo {
+import com.curso.java.interfaces.Vendible;
+
+public class Caballo implements Vendible {
 
 	private int id;
 	private String nombre;
@@ -59,6 +61,14 @@ public class Caballo {
 		this.recorrido += avance; 
 		System.out.println("-"+nombre+" avanza "+avance+" metros y lleva "+recorrido+" recorridos.");
 	}
+
+
+	@Override
+	public void vender() {
+		System.out.println("Vendiendo caballo "+this.nombre);
+		
+	}
+	
 }
 
 /*
