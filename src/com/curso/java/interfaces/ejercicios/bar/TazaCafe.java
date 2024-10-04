@@ -6,9 +6,8 @@ public class TazaCafe {
 	private int temperatura;
 	
 	public TazaCafe(String tipoCafe) {
-		super();
 		this.tipoCafe = tipoCafe;
-		this.temperatura = (int)Math.random()*100;
+		this.temperatura = (int)(Math.random()*100);
 	}
 	
 	public String getTipoCafe() {
