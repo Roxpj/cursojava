@@ -8,7 +8,7 @@ public class TeoriaColecciones {
 		//Sirven para guardar objetos de manera mas variable que los Arrays.
 		//Guardamos objetos y tienen posiciones, un mismo objeto puede estar repetido (en dos posiciones distintas de la lista) excepto en Set
 		
-		//Están basadas en las interfaces
+		//Están basadas en las interfaces, todas vienen de Iterable
 		//Vamos a ver tres tipos, son interfaces, tienen unos métodos que implementan...
 		
 		///List
@@ -24,7 +24,7 @@ public class TeoriaColecciones {
 		///Map
 		//Clase HashMap
 		//Permite tener clave/valor 
-		
+		//No hereda de Collection e Iterable, no es una colección en realidad
 		
 		//List y Set heredan de la interfaz Collection, que a su vez hereda de Iterable
 		//Es importante elegir la colección teniendo en cuenta sus diferencias al añadir, recuperar y eliminar objetos
