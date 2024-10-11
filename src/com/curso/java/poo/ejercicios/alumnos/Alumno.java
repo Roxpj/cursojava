@@ -79,6 +79,12 @@ public class Alumno {
 			System.out.println("Debes ser mayor de edad para ver la nota.");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Alumno [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", mayorEdad=" + mayorEdad
+				+ ", nota=" + nota + "]";
+	}
 	
 }
 

@@ -49,7 +49,7 @@ public class GestionFicheros {
 //		System.out.println("Fichero creado");
 	
 		
-		//Try with resources
+		//Try with resources -- lo podemos usar si la clase que queremos controlar implementa la interfaz AutoCloseable
 		try (BufferedWriter buffer = new BufferedWriter(new FileWriter(archivo, false))) {
 
 			buffer.append("Hola que tal amigos!\n")
@@ -79,7 +79,7 @@ public class GestionFicheros {
 	}
 
 	public static String leerArchivo(String nombre) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();  //se usa para no generar muchos objetos cuando queremos concatenar strings
 		File archivo = new File(nombre);
 //		FileReader fileReader = new FileReader(archivo);
 //		BufferedReader reader = new BufferedReader(fileReader);
@@ -93,9 +93,14 @@ public class GestionFicheros {
 
             String linea;
             
+//            do {
+//            	linea = reader.readLine();
+//            }while(linea!=null);
+            
             while ( (linea = reader.readLine()) != null){
                 sb.append(linea).append("\n");
             }
+            
         } catch (IOException e) {
         	System.out.println("Error " + e.getMessage());
             //e.printStackTrace();

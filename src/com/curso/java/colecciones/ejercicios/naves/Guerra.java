@@ -1,5 +1,6 @@
 package com.curso.java.colecciones.ejercicios.naves;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +9,13 @@ import java.util.Set;
 
 import com.curso.java.colecciones.ejercicios.naves.excepciones.MaxBoardingLimitException;
 import com.curso.java.colecciones.ejercicios.naves.excepciones.MaxPointsLimitException;
+import com.curso.java.colecciones.ejercicios.naves.individuos.Guerrero;
 import com.curso.java.colecciones.ejercicios.naves.individuos.Marciano;
 
 public class Guerra {
 	
 	public void iniciarGuerra(VehiculoGuerra bandoUsuario) {
-		Map<String, VehiculoGuerra> contrincantes = null;
+		Map<String, VehiculoGuerra> contrincantes = new HashMap();
 		
 		Ufo ufo1 = this.crearBandoMarciano();
 		contrincantes = this.crearContrincantes(ufo1, bandoUsuario);
@@ -78,33 +80,32 @@ public class Guerra {
 	private void batalla(Map<String, VehiculoGuerra> contrincantes) {
 		int num = (int)(Math.random()*11);
 		Set<String> keys = contrincantes.keySet();
-		List<String> nombresContrincantes = null;
+		String bandoUsuario = "";
 		for (String key : keys) {
-			nombresContrincantes.add(key);
+			bandoUsuario = key;
 		}
-		
 		if(num%2==0) {
 			System.out.println("\nLa nave \033[0;36mMarciana\033[0m ataca primero.");
-			this.ataque(contrincantes, "Marcianos", nombresContrincantes.getLast());
-			this.ataque(contrincantes, "Terricolas", "Marcianos");
+			this.ataque(contrincantes, "Ovnicito", bandoUsuario);
+			this.ataque(contrincantes, bandoUsuario, "Ovnicito");
 		}else {
 			System.out.println("\n\033[0;92mTu nave\033[0m ataca primero.");
-			this.ataque(contrincantes, "Terricolas", "Marcianos");
-			this.ataque(contrincantes, "Marcianos", "Terricolas");
+			this.ataque(contrincantes, bandoUsuario, "Ovnicito");
+			this.ataque(contrincantes, "Ovnicito", bandoUsuario);
 		}
 	}
 	
 	private void ataque(Map<String, VehiculoGuerra> contrincantes, String primeros, String segundos) {
 		int ataque = contrincantes.get(primeros).atacar();
-		System.out.println("\nEl bando de los "+primeros+" realiza un ataque de "+ataque+" puntos de fuerza.");
+		System.out.println("\nLa nave "+primeros+" realiza un ataque de "+ataque+" puntos de fuerza.");
 		int defensa = contrincantes.get(segundos).defender();
-		System.out.println("El bando de los "+segundos+" se defiende con "+defensa+" puntos de defensa.");
+		System.out.println("La nave "+segundos+" se defiende con "+defensa+" puntos de defensa.");
 		int danioFinal = ataque-defensa;
 		if(danioFinal<=0) {
-			System.out.println("Los "+segundos+" se han defendido completamente del ataque.");
+			System.out.println("La nave "+segundos+" se ha defendido completamente del ataque.");
 		}else {
 			contrincantes.get(segundos).setPuntosVida(contrincantes.get(segundos).getPuntosVida()-danioFinal);
-			System.out.println("\033[0;91mEl bando de los "+primeros+" ha hecho "+danioFinal+" puntos de daño a los "+segundos+".\033[0m");			
+			System.out.println("\033[0;91mLa nave "+primeros+" ha hecho "+danioFinal+" puntos de daño a la "+segundos+".\033[0m");			
 		}
 	}
 	

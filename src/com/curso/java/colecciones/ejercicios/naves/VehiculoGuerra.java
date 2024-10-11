@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.curso.java.colecciones.ejercicios.naves.excepciones.MaxBoardingLimitException;
 import com.curso.java.colecciones.ejercicios.naves.excepciones.MaxPointsLimitException;
+import com.curso.java.colecciones.ejercicios.naves.individuos.Guerrero;
 import com.curso.java.colecciones.ejercicios.naves.interfaces.Tripulable;
 
 public class VehiculoGuerra implements Tripulable{
@@ -35,7 +36,7 @@ public class VehiculoGuerra implements Tripulable{
 	
 	public VehiculoGuerra(String nombre, int ataque, int defensa, List<Guerrero> guerreros) throws MaxPointsLimitException{
 		super();
-		if(ataque+defensa>=10) {
+		if(ataque+defensa>10) {
 			throw new MaxPointsLimitException("Los puntos de ataque y defensa combinados no deben ser mayores que 10.");
 		}
 		this.nombre = nombre;
@@ -47,7 +48,7 @@ public class VehiculoGuerra implements Tripulable{
 	
 	public VehiculoGuerra(String nombre, int ataque, int defensa)  throws MaxPointsLimitException{
 		super();
-		if(ataque+defensa>=10) {
+		if(ataque+defensa>10) {
 			throw new MaxPointsLimitException("Los puntos de ataque y defensa combinados no deben ser mayores que 10.");
 		}
 		this.nombre = nombre;
@@ -57,10 +58,10 @@ public class VehiculoGuerra implements Tripulable{
 		this.guerreros = new ArrayList();
 	}
 	
-	public int getPuntosVida() {
+	protected int getPuntosVida() {
 		return puntosVida;
 	}
-	public void setPuntosVida(int puntosVida) {
+	void setPuntosVida(int puntosVida) {
 		this.puntosVida = puntosVida;
 	}
 	public List<Guerrero> getGuerreros() {
@@ -108,14 +109,14 @@ public class VehiculoGuerra implements Tripulable{
 			
 			String bando = "";
 			if(this instanceof Ufo) {
-				bando = "Marciana";
+				bando = "la nave marciana ";
 			}else {
-				bando = "Terricola";
+				bando = "tu nave ";
 			}
 			if(guerrero.getNombre().contains("10")) {
-				System.out.println("Sube a la nave "+bando+" "+this.nombre+" el guerrero legendario "+guerrero.getNombre()+".\nSu inmensa fuerza es de "+guerrero.getFuerza()+" y su defensa blindada es de "+guerrero.getResistencia()+".\n");
+				System.out.println("Sube a "+bando+this.nombre+" el guerrero legendario "+guerrero.getNombre()+".\nSu inmensa fuerza es de "+guerrero.getFuerza()+" y su defensa blindada es de "+guerrero.getResistencia()+".\n");
 			}else {
-				System.out.println("Sube a la nave el guerrero "+guerrero.getNombre());
+				System.out.println("Sube a "+bando+"el guerrero "+guerrero.getNombre());
 			}
 		}
 	}

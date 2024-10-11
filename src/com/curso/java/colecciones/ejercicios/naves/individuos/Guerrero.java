@@ -10,7 +10,7 @@ public class Guerrero {
 	
 	public Guerrero(String nombre, String tipo, int fuerza, int resistencia) throws MaxPointsLimitException{
 		super();
-		if(fuerza+resistencia>=10) {
+		if(fuerza+resistencia>10) {
 			throw new MaxPointsLimitException("Los puntos de fuerza y resistencia combinados no deben ser mayores que 10.");
 		}
 		this.nombre = nombre;
@@ -34,14 +34,8 @@ public class Guerrero {
 	public int getFuerza() {
 		return fuerza;
 	}
-	public void setFuerza(int fuerza) {
-		this.fuerza = fuerza;
-	}
 	public int getResistencia() {
 		return resistencia;
-	}
-	public void setResistencia(int resistencia) {
-		this.resistencia = resistencia;
 	}
 	
 }

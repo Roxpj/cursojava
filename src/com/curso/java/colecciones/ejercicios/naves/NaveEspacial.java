@@ -3,6 +3,7 @@ package com.curso.java.colecciones.ejercicios.naves;
 import java.util.List;
 
 import com.curso.java.colecciones.ejercicios.naves.excepciones.MaxPointsLimitException;
+import com.curso.java.colecciones.ejercicios.naves.individuos.Guerrero;
 
 public class NaveEspacial extends VehiculoGuerra {
 	
