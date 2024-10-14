@@ -8,6 +8,14 @@ public class Guerrero {
 	private int fuerza;
 	private int resistencia;
 	
+	/**
+	 * 
+	 * @param nombre
+	 * @param tipo
+	 * @param fuerza
+	 * @param resistencia
+	 * @throws MaxPointsLimitException
+	 */
 	public Guerrero(String nombre, String tipo, int fuerza, int resistencia) throws MaxPointsLimitException{
 		super();
 		if(fuerza+resistencia>10) {
@@ -17,6 +25,11 @@ public class Guerrero {
 		this.tipo = tipo;
 		this.fuerza = fuerza;
 		this.resistencia = resistencia;
+	}
+	
+	//evitamos repetir código
+	public Guerrero(String nombre, int fuerza, int resistencia) throws MaxPointsLimitException{
+		this(nombre, null, fuerza, resistencia);
 	}
 	
 	public String getNombre() {

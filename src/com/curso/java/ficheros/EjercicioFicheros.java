@@ -89,7 +89,7 @@ public class EjercicioFicheros {
 				Alumno alumno = new Alumno(dniAlumno, nombreAlumno, apellidoAlumno);
 				alumnos.add(alumno);			
 			}catch(ArrayIndexOutOfBoundsException aiobe) {
-				System.out.println("Error " + aiobe.getMessage()+" in line: "+linea);
+				System.err.println("Error " + aiobe.getMessage()+" in line: "+linea);
 			}
 		}
 		return alumnos;

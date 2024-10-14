@@ -7,7 +7,7 @@ public class Alumno {
 	private String apellidos;
 	private boolean mayorEdad;
 	private int nota;
-	static int contador; //variable estática, debe ser también privada y con sus métodos get y set tambien estáticos
+	static int contador; //variable estática, se comparte entre todas las clases. Debe ser también privada y con sus métodos get y set tambien estáticos
 	
 	public Alumno() {
 	}

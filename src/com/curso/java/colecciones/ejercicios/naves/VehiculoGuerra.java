@@ -16,6 +16,10 @@ public class VehiculoGuerra implements Tripulable{
 	private int defensa;
 	private List<Guerrero> guerreros;
 	
+	/**
+	 * Crea un VehiculoGuerra con valores predefinidos de puntosVida=100, ataque=5, defensa=5, lista de guerreros vacía.
+	 * @param nombre
+	 */
 	public VehiculoGuerra(String nombre) {
 		super();
 		this.nombre = nombre;
@@ -25,6 +29,10 @@ public class VehiculoGuerra implements Tripulable{
 		this.guerreros = new ArrayList();
 	}
 	
+	/**
+	 * Crea un VehiculoGuerra con valores predefinidos de puntosVida=100, ataque=5, defensa=5.
+	 * @param nombre
+	 */
 	public VehiculoGuerra(String nombre, List<Guerrero> guerreros) {
 		super();
 		this.nombre = nombre;
@@ -34,6 +42,14 @@ public class VehiculoGuerra implements Tripulable{
 		this.guerreros = guerreros;
 	}
 	
+	/**
+	 * 
+	 * @param nombre
+	 * @param ataque
+	 * @param defensa
+	 * @param guerreros
+	 * @throws MaxPointsLimitException
+	 */
 	public VehiculoGuerra(String nombre, int ataque, int defensa, List<Guerrero> guerreros) throws MaxPointsLimitException{
 		super();
 		if(ataque+defensa>10) {
@@ -46,6 +62,13 @@ public class VehiculoGuerra implements Tripulable{
 		this.guerreros = guerreros;
 	}
 	
+	/**
+	 * 
+	 * @param nombre
+	 * @param ataque
+	 * @param defensa
+	 * @throws MaxPointsLimitException
+	 */
 	public VehiculoGuerra(String nombre, int ataque, int defensa)  throws MaxPointsLimitException{
 		super();
 		if(ataque+defensa>10) {
